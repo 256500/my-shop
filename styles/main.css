@@ -1,0 +1,41 @@
+/* Variables */
+:root {
+    --primary: #ff6b6b;
+    --dark: #333;
+    --light: #f8f9fa;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background: var(--dark);
+    color: white;
+}
+
+.hero {
+    background: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f') center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 5%;
+}
