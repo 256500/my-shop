@@ -3,51 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanThreads | Modern Fashion</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- Auto-save reminder -->
-    <script>
-        setInterval(() => {
-            console.log("💾 Auto-save reminder: Commit your code!");
-        }, 300000); // 5 minutes
-    </script>
+    <title>My Web Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+</style>     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <h1><i class="fas fa-tshirt"></i> UrbanThreads</h1>
+        <h1>Welcome to my web</h1>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">Women</a>
-            <a href="#">Men</a>
-            <a href="#">Sale</a>
+            <ul>
+                <li><a href="pages/women.html"><i class="fas fa-female"></i> Womens</a></li>
+                <li><a href="men.html"><i class="fas fa-male"></i> Mens</a></li>
+                <li><a href="kids.html"><i class="fas fa-child"></i> Kids</a></li>
+                <li><a href="utensils.html"><i class="fas fa-utensils"></i> Utensils</a></li>
+                <li><a href="electronics.html"><i class="fas fa-laptop"></i> Electronics</a></li>
+                <li><a href="wigs.html"><i class="fas fa-user-alt"></i> Ladies Wigs</a></li>
+                <li><a href="sunglasses.html"><i class="fas fa-sun"></i> Sunglasses</a></li>
+                <li><a href="shoes.html"><i class="fas fa-shoe-prints"></i> Shoes</a></li>
+                <li><a href="watches.html"><i class="far fa-clock"></i> Watches</a></li>
+                <li><a href="jewelry.html"><i class="fas fa-gem"></i> Jewelry</a></li>
+                <li><a href="accessories.html"><i class="fas fa-tshirt"></i> Accessories</a></li>
+                <li><a href="cosmetics.html"><i class="fas fa-paint-brush"></i> Cosmetics</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <div class="hero-text">
-            <h2>Summer Collection 2024</h2>
-            <p>Up to 50% off on selected items</p>
-            <button>Shop Now</button>
+    <main>
+        <h2>Product Categories</h2>
+        <div class="product-grid">
+            <!-- Women's Category -->
+            <div class="product-category">
+                <a href="pages/women.html">
+                    <div class="product-image-container">
+                        <img src="https://ilmages.unspash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Women's Fashion" class="product-image">
+                    </div>
+                    <p>Women's</p>
+                </a>
+            </div>
+
+            <!-- Men's Category -->
+            <div class="product-category">
+                <a href="men.html">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Men's Fashion" class="product-image">
+                    </div>
+                    <p>Men's</p>
+                </a>
+            </div>
+
+            <!-- Night wear -->
+            <div class="product-category">
+                <a href="kids.html">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1604917018610-3849a14b3a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kids' Fashion" class="product-image">
+                    </div>
+                    <p>Kids</p>
+                </a>
+            </div>
+
+            <!-- Utensils -->
+            <div class="product-category">
+                <a href="utensils.html">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Utensils" class="product-image">
+                    </div>
+                    <p>Utensils</p>
+                </a>
+            </div>
+
+            <!-- Electronics -->
+            <div class="product-category">
+                <a href="electronics.html">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Electronics" class="product-image">
+                    </div>
+                    <p>Electronics</p>
+                </a>
+            </div>
+
+            <!-- Ladies Wigs -->
+            <div class="product-category">
+                <a href="wigs.html">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ladies Wigs" class="product-image">
+                    </div>
+                    <p>Ladies Wigs</p>
+                </a>
+            </div>
         </div>
-    </section>
-
-    <!-- Product Grid -->
-    <main class="product-grid">
-        <!-- Product cards will load here via JavaScript -->
-        <div id="products-container"></div>
     </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 UrbanThreads. Built with <i class="fas fa-heart"></i> and VS Code</p>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="scripts/app.js"></script>
 </body>
 </html>
