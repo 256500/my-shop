@@ -9,14 +9,14 @@
 }
 
 body {
-    background-color: #fefefe;
+    background-color: hwb(320 92% 7%);
     color: #333;
     line-height: 1.6;
 }
 
 /* Navigation Styles */
 header {
-    background-color: #fff;
+    background-color: lab(57.75% -0.93 -10.6);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 15px 0;
 }

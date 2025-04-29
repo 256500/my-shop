@@ -1,15 +1,16 @@
+JUST INCASE
 /* styles.css */
 :root {
     --primary-color: #ff3366; /* pink color */
     --secondary-color: #333;
     --light-color: #f8f8f8;
-    --dark-color: #222;
-    --text-color: #333;
+    --dark-color: hsl(0, 24%, 96%);
+    --text-color: hsl(0, 43%, 3%);
     --sale-color: #ff0000;
     --discount-bg: #ffeb3b;
     --white: #ffffff;
     --gray-light: #e0e0e0;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 12px rgba(249, 245, 245, 0.874);
     --transition: all 0.3s ease;
 }
 
@@ -27,15 +28,56 @@ body {
     background-color: var(--white);
 }
 
-/* Header Styles */
+/* Navigation Styles */
 header {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
+    background-color: rgb(224, 171, 224);
+    box-shadow: 0 2px 4px rgba(243, 241, 241, 0.897);
+    padding: 15px 0;
+    height: 100px;
+    box-shadow: 0 2px 10px rgba(234, 232, 232, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+
+    color: hsl(0, 21%, 95%);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
+.shein-product {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4; /* SHEIN's image ratio */
+  }
+  .image-swapper { 
+    position: relative;
+    height: 100%;
+  }
+  .primary-img, .hover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .shein-product:hover .primary-img {
+    transform: translateX(-100%);
+  }
+  .shein-product:hover .hover-img {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
 h1 {
     text-align: center;
@@ -114,39 +156,63 @@ h2::after {
 }
 
 /* Product Grid */
+/* Default (Desktop) */
+/* SHEIN Product Grid - Exact Copy */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 16px;
+    margin: 12px auto 0;
+    max-width: 1200px;
+  }
+  
+  @media (max-width: 1024px) {
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  @media (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 0 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding: 0 8px;
+    }
+  }
 
-.product-category {
-    background: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    position: relative;
+.product-category p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: lab(67.92% -64.18 49.55);
 }
 
 .product-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* little lift on hover */
 }
 
 .product-image-container {
-    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
     overflow: hidden;
-    aspect-ratio: 1/1; /* Square images */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* centers the circle */
 }
-
-.product-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+  
+    .product-image:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    }    
 
 .product-category:hover .product-image {
     transform: scale(1.05);
@@ -236,3 +302,165 @@ h2::after {
         display: inline-block;
     }
 }
+
+/* SHEIN Marquee Banner */
+.shein-marquee {
+    background-color: #000;
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+  }
+  
+  .marquee-content span {
+    padding-right: 100px; /* Space between repeats */
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .shein-marquee {
+      padding: 8px 0;
+      font-size: 10px;
+    }
+    
+    .marquee-content {
+      animation-duration: 15s; /* Faster on mobile */
+    }
+  }
+
+  
+.marquee-banner-container {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #f5f5f5; /* SHEIN-like light gray */
+    padding: 10px 0;
+  }
+  
+  .marquee-banner-track {
+    display: inline-block;
+    animation: marquee-scroll 30s linear infinite;
+  }
+  
+  .marquee-banner-track img {
+    display: inline-block;
+    height: 120px; /* Fixed height */
+    width: auto;
+    margin: 0 15px; /* Spacing between images */
+    vertical-align: middle;
+    border-radius: 4px; /* Optional SHEIN-style rounding */
+  }
+  
+  @keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .marquee-banner-track img {
+      height: 100px;
+      margin: 0 8px;
+    }
+    .marquee-banner-track {
+      animation-duration: 20s; /* Faster on mobile */
+    }
+  }
+
+  .marquee-banner-container:hover .marquee-banner-track {
+    animation-play-state: paused;
+  }
+
+
+
+
+  .product-item {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+  }
+
+  .product-name {
+    display: block;
+    font-size: 13px;
+    color: lab(0.39% 0.52 0.18);
+    line-height: 1.4;
+    font-weight: 500;
+    padding: 0 5px;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+    
+  .product-price {
+    color: #ff2d96;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  /* Hover Effects */
+  .product-item:hover .product-image {
+    transform: scale(1.03);
+  }
+
+  /* Add these to prevent common crushing issues */
+.product-grid {
+  width: 100%;
+  overflow: hidden; /* Prevents horizontal scroll */
+}
+
+.shein-product {
+  min-width: 0; /* Prevents flex item overflow */
+}
+
+/* Better image handling */
+.product-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: var(--transition);
+}
+
+/* Ensure header doesn't collapse */
+header {
+  min-height: 100px;
+  flex-shrink: 0;
+}
+
+/* Better mobile touch targets */
+@media (max-width: 480px) {
+  nav a {
+    padding: 0.75rem;
+  }
+  
+  .product-item {
+    padding: 8px;
+  }
+}
+
+/* Prevent CLS (Cumulative Layout Shift) */
+.image-swapper {
+  width: 100%;
+  aspect-ratio: 3/4;
+}
+
+/* Smooth font loading */
+body {
+  font-display: swap;
+}
+  
