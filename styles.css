@@ -463,4 +463,60 @@ header {
 body {
   font-display: swap;
 }
-  
+
+/* Thumbnail Styles */
+.thumbnail-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.thumbnail:hover {
+  border-color: #ff6b6b;
+  transform: scale(1.1);
+}
+
+/* Stock Counter Styles */
+.stock-counter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Stock States */
+.stock-counter.low { 
+  color: orange;
+  background: #fff8e6;
+}
+
+.stock-counter.very-low {
+  color: red;
+  background: #ffebee;
+  animation: pulse 1.5s infinite;
+}
+
+.stock-counter.out-of-stock {
+  color: white;
+  background: #ff5252;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
