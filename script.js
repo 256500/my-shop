@@ -73,6 +73,25 @@ function updateProductImages(colorElement) {
   });
 }
 
+ // Back-to-top button
+ document.addEventListener('DOMContentLoaded', () => {
+  const backToTopButton = document.getElementById('back-to-top');
+  
+  window.addEventListener('scroll', () => {
+      backToTopButton.classList.toggle('visible', window.scrollY > 300);
+  });
+
+  backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Add slight delay to category cards for animation
+  const cards = document.querySelectorAll('.category-card');
+  cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+  });
+});
+
 // Product Data date 3 may
 const products = {
   dress1: {

@@ -13,6 +13,7 @@ const products = {
               images: [
                   "../images/2001.jpg",
                   "../../images/index-1.jpg",
+                  "../images/tester.jpg",
                   "../images/tester.jpg"
               ]
           },
@@ -38,7 +39,7 @@ const products = {
               name: "black",
               display: "Black",
               images: [
-                  "https://images.unsplash.com/photo-1572804013427-4d7ca7268217",
+                  "../images/dark2.jpg",
                   "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
                   "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f"
               ]
@@ -53,9 +54,482 @@ const products = {
               ]
           }
       ],
-      sizes: ["XS", "S", "M", "L"]
+      sizes: ["31", "34", "36", "40"]
+  },
+  dress3: {
+    title: "Floral Summer Dress with Ruffled Hem",
+    price: "Ksh 1,500.99",
+    originalPrice: "Ksh 1,200.99",
+    description: "Lightweight cotton dress with beautiful floral pattern and ruffled hem. Perfect for summer days with its breathable fabric and comfortable fit.",
+    soldCount: "1.2k+ sold",
+    colors: [
+        {
+            name: "red",
+            display: "Red Floral",
+            images: [
+                "../images/dark2.jpg",
+                "../../images/index-1.jpg",
+                "../images/tester.jpg"
+            ]
+        },
+        {
+            name: "blue",
+            display: "Blue Floral",
+            images: [
+                "../images/dark2.jpg",
+                "../images/dress-blue-front.jpg",
+                "../images/index-004.jpg"
+            ]
+        }
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress4: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "../images/dark2.jpg",
+                "../images/dress-blue-front.jpg",
+                "../images/index-004.jpg"
+            ]
+        },
+        {
+            name: "purple",
+            display: "purple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "../images/dark2.jpg",
+                "../images/dress-blue-front.jpg",
+                "../images/index-004.jpg"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress5: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress6: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress7: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress8: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress9: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress10: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress11: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress12: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress13: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress14: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
+  },
+  dress15: {
+    title: "Elegant Evening Dress with Slit",
+    price:"Ksh 1,500.99",
+    description: "Sophisticated evening dress with thigh-high slit and figure-hugging silhouette. Made from stretchy satin material for a luxurious feel.",
+    soldCount: "850+ sold",
+    colors: [
+        {
+            name: "black",
+            display: "Black",
+            images: [
+                "http17",
+                "httpa",
+                "httf"
+            ]
+        },
+        {
+            name: "puple",
+            display: "puple",
+            images: [
+                "../images/2001.jpg",
+                "../images/index-1.jpg",
+                "../images/index-1.jpg"
+            ]
+        },
+        {
+            name: "red",
+            display: "Red",
+            images: [
+                "httb",
+                "htt9",
+                "hta"
+            ]
+        },
+    ],
+    sizes: ["31", "34", "36", "40"]
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -194,7 +668,6 @@ document.querySelectorAll('.size-guide-btn').forEach(btn => {
 
 function openSizeGuide() {
     const guide = document.querySelector('.size-guide-popup');
-    const tableBody = guide.querySelector('tbody');
     
     // Initialize with CM data
     updateSizeTable('cm');

@@ -1,7 +1,7 @@
 JUST INCASE
 /* styles.css */
 :root {
-    --primary-color: #ff3366; /* pink color */
+    --primary-color: #f1003c; /* pink color */
     --secondary-color: #333;
     --light-color: #f8f8f8;
     --dark-color: hsl(0, 24%, 96%);
@@ -12,6 +12,112 @@ JUST INCASE
     --gray-light: #e0e0e0;
     --shadow: 0 4px 12px rgba(249, 245, 245, 0.874);
     --transition: all 0.3s ease;
+}
+
+/* Increase base font size for mobile */
+body {
+  font-size: 16px; /* Minimum readable size */
+}
+
+/* Ensure tap targets are at least 48x48px */
+.category-card, .search-bar button {
+  min-height: 48px;
+}
+
+@media (max-width: 600px) {
+  /* Stack categories on very small screens */
+  .category-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+  }
+
+  /* Simplify cards for mobile */
+  .category-card {
+      flex-direction: row;
+      text-align: left;
+      padding: 12px;
+      aspect-ratio: unset;
+  }
+
+  /* Smaller icons to fit narrow screens */
+  .category-card img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0;
+      margin-right: 10px;
+  }
+
+  /* Compact header */
+  header {
+      padding: 10px;
+  }
+  h1 {
+      font-size: 1.2rem;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.mobile-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+
+
+
+
+ /* Header & Search */
+ header {
+  background: #ffffff;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ff6b6b;
+}
+.search-bar {
+  display: flex;
+  margin: 0 auto;
+  max-width: 90%;
+}
+.search-bar input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px 0 0 25px;
+  font-size: 1rem;
+  outline: none;
+}
+.search-bar button {
+  padding: 12px 15px;
+  background: #d90c0c;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  color: white;
+  cursor: pointer;
 }
 
 /* Reset and Base Styles */
@@ -30,7 +136,7 @@ body {
 
 /* Navigation Styles */
 header {
-    background-color: rgb(224, 171, 224);
+    background-color: rgba(253, 77, 24, 0.982);
     box-shadow: 0 2px 4px rgba(243, 241, 241, 0.897);
     padding: 15px 0;
     height: 100px;
@@ -49,10 +155,10 @@ header {
     letter-spacing: 0.5px;
 }
 
-.shein-product {
+ .product {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 3/4; /* SHEIN's image ratio */
+    aspect-ratio: 3/4; /*image ratio */
   }
   .image-swapper { 
     position: relative;
@@ -157,7 +263,7 @@ h2::after {
 
 /* Product Grid */
 /* Default (Desktop) */
-/* SHEIN Product Grid - Exact Copy */
+/* Product Grid - Exact Copy */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -303,22 +409,22 @@ h2::after {
     }
 }
 
-/* SHEIN Marquee Banner */
-.shein-marquee {
-    background-color: #000;
-    color: white;
-    padding: 10px 0;
+/* Marquee Banner */
+marquee {
+    background-color: #ffffff;
+    color: rgb(5, 1, 1);
+    padding: 20px 0;
     overflow: hidden;
     white-space: nowrap;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 650;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.2px;
   }
   
   .marquee-content {
     display: inline-block;
-    animation: marquee 20s linear infinite;
+    animation: marquee 30s linear infinite;
   }
   
   .marquee-content span {
@@ -327,11 +433,11 @@ h2::after {
   
   @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); }
   }
   
   /* Mobile Optimization */
-  @media (max-width: 768px) {
+  @media (max-width: 100px) {
     .shein-marquee {
       padding: 8px 0;
       font-size: 10px;
@@ -520,3 +626,43 @@ body {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+/* Back-to-Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+#back-to-top.visible {
+  opacity: 1;
+}
+
+        /* Responsive Adjustments */
+        @media (max-width: 480px) {
+          .category-grid {
+              grid-template-columns: 1fr;
+          }
+          .category-card {
+              aspect-ratio: unset;
+              flex-direction: row;
+              justify-content: flex-start;
+              text-align: left;
+              gap: 15px;
+          }
+          .category-card img {
+              margin-bottom: 0;
+              width: 50px;
+              height: 50px;
+          }
+      }

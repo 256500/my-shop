@@ -1,3 +1,93 @@
+ /* ===== MOBILE GRID FIX ===== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 8px; /* SHEIN uses tight spacing */
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box; /* Prevents overflow */
+}
+
+.product-card {
+    width: 100%; /* Fill grid cell completely */
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* ===== PRODUCT IMAGE ===== */
+.product-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 133%; /* 3:4 aspect ratio (SHEIN standard) */
+    overflow: hidden;
+}
+
+.product-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ===== PRODUCT TEXT ===== */
+.product-details {
+    padding: 8px;
+}
+
+.product-title {
+    font-size: 13px;
+    color: #333;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 36px; /* Exactly 2 lines of text */
+    line-height: 1.3;
+}
+
+.product-price {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (min-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet */
+        gap: 12px;
+        padding: 12px;
+    }
+}
+
+@media (min-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(5, 1fr); /* 5 columns on desktop */
+        gap: 15px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .product-title {
+        font-size: 14px;
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  /* === BASE STYLES === */
  * {
     margin: 0;
@@ -11,7 +101,7 @@ body {
     color: #333;
 }
 
-/* === PRODUCT GRID === */
+/* PRODUCT GRID */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
