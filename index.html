@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>  
   <div class="search-bar">
-      <input type="text" placeholder="Search categories...">
+      <input type="text" placeholder="Search for products...">
       <button>🔍</button>
   </div>
     <meta charset="UTF-8">
@@ -15,40 +15,35 @@
     </head>
     <body>
     <header>
-        <h1> </h1>
-        <nav>
-            <ul>
-                <li><a href="pages/women.html"><i class="fas fa-female"></i> Womens</a></li>
-                <li><a href="men.html"><i class="fas fa-male"></i> Mens</a></li>
-                <li><a href="kids.html"><i class="fas fa-child"></i> Kids</a></li>
-                <li><a href="utensils.html"><i class="fas fa-utensils"></i> Utensils</a></li>
-                <li><a href="electronics.html"><i class="fas fa-laptop"></i> Electronics</a></li>
-                <li><a href="wigs.html"><i class="fas fa-user-alt"></i> Ladies Wigs</a></li>
-                <li><a href="sunglasses.html"><i class="fas fa-sun"></i> Sunglasses</a></li>
-                <li><a href="shoes.html"><i class="fas fa-shoe-prints"></i> Shoes</a></li>
-                <li><a href="watches.html"><i class="far fa-clock"></i> Watches</a></li>
-                <li><a href="jewelry.html"><i class="fas fa-gem"></i> Jewelry</a></li>
-                <li><a href="accessories.html"><i class="fas fa-tshirt"></i> Accessories</a></li>
-                <li><a href="cosmetics.html"><i class="fas fa-paint-brush"></i> Cosmetics</a></li>
-            </ul>
-        </nav>
+        <h1>GLAND shine</h1>
+        <div class="nav-scroller">
+          <button class="arrow-btn" onclick="scrollCategories(-1)" aria-label="Scroll left">❮</button>            
+                    <div class="nav-scroller" aria-label="Swipeable categories">
+                      <nav class="swipe-nav" role="navigation">
+                        <a href="#women" class="nav-item active">Women</a>
+                        <a href="#men" class="nav-item">Men</a>
+                        <a href="#baby" class="nav-item">Baby</a>
+                        <a href="#underwear" class="nav-item">Underwear</a>
+                        <a href="#sale" class="nav-item">Sale</a>
+                        <a href="#electronics" class="nav-item">Electronics</a>
+                        <a href="#utensils" class="nav-item">Utensils</a>
+                        <a href="#beachwear" class="nav-item">Beachwear</a>
+                        <a href="#wigs" class="nav-item">Wigs</a>
+                        <a href="#sunglasses" class="nav-item">Sunglasses</a>
+                        <a href="#shoes" class="nav-item">Shoes</a>
+                        <a href="#watches" class="nav-item">Watches</a>
+                        <a href="#jewelry" class="nav-item">Jewelry</a>
+                        <a href="#accessories" class="nav-item">Accessories</a>
+                        <a href="#cosmetics" class="nav-item">Cosmetics</a>
+                        <a href="#giftcards" class="nav-item">Gift Cards</a>
+                        <a href="#home" class="nav-item">Home</a>
+                        <a href="#about" class="nav-item">About</a>                    
+                      </nav>  
+                      <button class="arrow-btn" onclick="scrollCategories(1)" aria-label="Scroll right">❯</button>                   
+                    </div>
     </header>
 
     <main>
-        <div class="shein-marquee">
-            <div class="marquee-content">
-              <span>FREE SHIPPING on orders over $49 • 30-DAY RETURNS • NEW ARRIVALS DAILY •</span>
-            </div>
-          </div>
-
-          <div class="marquee-banner-container">
-            <div class="marquee-banner-track">
-              <img src="images/bottom26.jpg" alt="Product 1">
-              <!-- Mirrored set -->
-              <img src="images/womens-fashion.jpg" alt="Product 1">
-            </div>
-          </div>
-          
           <h2>Product Categories</h2>
           <div class="product-grid"> 
 
@@ -160,6 +155,6 @@
               </div>        
         </div>  
     </main>
-    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+    <script src="script.js"></script>
     </body>
 </html>

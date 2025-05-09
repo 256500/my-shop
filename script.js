@@ -1,22 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  const marquee = document.querySelector('.marquee-content');
-  if (marquee) {
-    // Duplicate content for seamless looping
-    marquee.innerHTML += marquee.innerHTML;
-  }
-});
-
-// Auto-generate mirrored images for perfect loop
-document.addEventListener('DOMContentLoaded', () => {
-  const track = document.querySelector('.marquee-banner-track');
-  if (track) {
-    const images = track.innerHTML;
-    track.innerHTML = images + images; // Duplicate content
-  }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
   // Handle color option clicks
   document.querySelectorAll('.color-option').forEach(colorOption => {
     colorOption.addEventListener('click', function() {
@@ -214,4 +197,185 @@ function updateStockDisplay(productId, color, size = '') {
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', () => {
   initProduct('dress1');
+});
+
+
+
+class SwipeNav {
+  constructor(container) {
+    this.container = container;
+    this.nav = container.querySelector('.swipe-nav');
+    if (!this.nav) {
+      console.error('Swipe navigation element not found!');
+      return;
+    }
+
+    // State variables
+    this.startX = 0;
+    this.scrollLeft = 0;
+    this.isDragging = false;
+    this.velocity = 0;
+    this.animationFrame = null;
+    this.lastScrollTime = 0;
+
+    // Event listeners with proper cleanup references
+    this.boundHandleStart = this.handleStart.bind(this);
+    this.boundHandleMove = this.handleMove.bind(this);
+    this.boundHandleEnd = this.handleEnd.bind(this);
+    this.boundApplyInertia = this.applyInertia.bind(this);
+    this.boundHandleWheel = this.handleWheel.bind(this);
+
+    // Touch events
+    this.nav.addEventListener('touchstart', this.boundHandleStart, { passive: false });
+    this.nav.addEventListener('touchmove', this.boundHandleMove, { passive: false });
+    this.nav.addEventListener('touchend', this.boundHandleEnd);
+
+    // Mouse events
+    this.nav.addEventListener('mousedown', this.boundHandleStart);
+    document.addEventListener('mousemove', this.boundHandleMove);
+    document.addEventListener('mouseup', this.boundHandleEnd);
+
+    // Wheel event
+    this.nav.addEventListener('wheel', this.boundHandleWheel, { passive: false });
+
+    // Initialize styles
+    this.nav.style.cursor = 'grab';
+    this.nav.style.userSelect = 'none';
+  }
+
+  // Unified touch/mouse handling
+  handleStart(e) {
+    const clientX = this.getClientX(e);
+    if (clientX === null) return;
+
+    this.startX = clientX;
+    this.scrollLeft = this.nav.scrollLeft;
+    this.isDragging = true;
+    this.velocity = 0;
+    this.lastScrollTime = performance.now();
+    
+    // Visual feedback
+    this.nav.style.scrollBehavior = 'auto';
+    this.nav.style.cursor = 'grabbing';
+    
+    // Cancel any ongoing inertia
+    cancelAnimationFrame(this.animationFrame);
+    
+    // Prevent text selection and default touch actions
+    e.preventDefault();
+  }
+
+  handleMove(e) {
+    if (!this.isDragging) return;
+    
+    const clientX = this.getClientX(e);
+    if (clientX === null) return;
+
+    const now = performance.now();
+    const deltaTime = now - this.lastScrollTime;
+    this.lastScrollTime = now;
+
+    // Calculate movement with time-based velocity
+    const walk = (clientX - this.startX) * 1.5;
+    const newScrollLeft = this.scrollLeft - walk;
+    
+    // Update velocity (pixels per millisecond)
+    if (deltaTime > 0) {
+      this.velocity = (newScrollLeft - this.nav.scrollLeft) / deltaTime;
+    }
+    
+    this.nav.scrollLeft = newScrollLeft;
+    e.preventDefault();
+  }
+
+  handleEnd() {
+    if (!this.isDragging) return;
+    
+    this.isDragging = false;
+    this.nav.style.cursor = 'grab';
+    this.nav.style.scrollBehavior = 'smooth';
+
+    // Apply inertia if significant velocity exists
+    if (Math.abs(this.velocity) > 0.1) {
+      this.animationFrame = requestAnimationFrame(this.boundApplyInertia);
+    }
+  }
+
+  handleWheel(e) {
+    // Only prevent default if scrolling horizontally
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+      return; // Allow vertical page scrolling
+    }
+
+    e.preventDefault();
+    this.nav.scrollLeft += e.deltaX * 0.5; // Reduce wheel sensitivity
+    
+    // Smooth wheel inertia
+    this.velocity = e.deltaX * 0.1;
+    cancelAnimationFrame(this.animationFrame);
+    this.animationFrame = requestAnimationFrame(this.boundApplyInertia);
+  }
+
+  applyInertia() {
+    const now = performance.now();
+    const deltaTime = now - this.lastScrollTime;
+    this.lastScrollTime = now;
+
+    // Stop inertia if velocity is too small
+    if (Math.abs(this.velocity) < 0.1 || deltaTime > 100) {
+      this.velocity = 0;
+      return;
+    }
+
+    // Apply velocity with time-based movement
+    const deltaScroll = this.velocity * deltaTime;
+    this.nav.scrollLeft += deltaScroll;
+    
+    // Apply friction
+    this.velocity *= Math.pow(0.95, deltaTime / 16);
+    
+    // Continue animation
+    this.animationFrame = requestAnimationFrame(this.boundApplyInertia);
+  }
+
+  getClientX(e) {
+    // Unified clientX extraction for touch/mouse events
+    if (e.clientX !== undefined) return e.clientX;
+    if (e.touches?.[0]?.clientX !== undefined) return e.touches[0].clientX;
+    console.warn('Could not determine clientX from event:', e);
+    return null;
+  }
+
+  destroy() {
+    // Cleanup event listeners
+    this.nav.removeEventListener('touchstart', this.boundHandleStart);
+    this.nav.removeEventListener('touchmove', this.boundHandleMove);
+    this.nav.removeEventListener('touchend', this.boundHandleEnd);
+    this.nav.removeEventListener('mousedown', this.boundHandleStart);
+    document.removeEventListener('mousemove', this.boundHandleMove);
+    document.removeEventListener('mouseup', this.boundHandleEnd);
+    this.nav.removeEventListener('wheel', this.boundHandleWheel);
+  }
+}
+
+
+function scrollCategories(direction) {
+  const scrollContainer = document.querySelector('.swipe-nav');
+  if (!scrollContainer) return;
+  
+  // Calculate scroll amount (60% of container width)
+  const scrollAmount = scrollContainer.clientWidth * 0.6 * direction;
+  scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+}
+
+// Optional: Disable arrows when at scroll limits [nav scroll event]
+document.addEventListener('DOMContentLoaded', () => {
+  const nav = document.querySelector('.swipe-nav');
+  const arrows = document.querySelectorAll('.arrow-btn');
+  nav.addEventListener('scroll', () => {
+      const atStart = nav.scrollLeft === 0;
+      const atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 1;   
+      arrows[0].disabled = atStart;
+      arrows[1].disabled = atEnd;
+  });
 });
