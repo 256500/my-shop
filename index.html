@@ -1,160 +1,517 @@
 <!DOCTYPE html>
-<head>  
-  <div class="search-bar">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLAND MART - SHEIN Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ===== BASE STYLES ===== */
+    :root {
+      /* inspired color palette */
+      --primary: #FF2E4D; /* SHEIN pink */
+      --secondary: #000000;
+      --light-bg: #FFFFFF;
+      --dark-text: #333333;
+      --light-text: #FFFFFF;
+      --gray-border: #F0F0F0;
+      
+      /* SHEIN-inspired typography */
+      --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-size-xs: 0.625rem;  /* 10px */
+      --font-size-sm: 0.75rem;   /* 12px */
+      --font-size-md: 0.875rem;  /* 14px */
+      --font-size-lg: 1rem;      /* 16px */
+      --font-size-xl: 1.125rem;  /* 18px */
+      --font-size-xxl: 1.5rem;   /* 24px */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      line-height: 1.5;
+      color: var(--dark-text);
+      background: var(--light-bg);
+    }
+
+    /* ===== HEADER STYLES ===== */
+    header {
+      background: white;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .logo h1 {
+      color: var(--primary);
+      font-size: var(--font-size-xxl);
+      font-weight: 700;
+    }
+
+    .search-bar {
+      display: flex;
+      margin: 0 auto;
+      max-width: 400px;
+      border: 1px solid var(--gray-border);
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      outline: none;
+      font-size: var(--font-size-md);
+    }
+
+    .search-bar button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      cursor: pointer;
+      font-size: var(--font-size-lg);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav-scroller {
+      position: relative;
+      margin: 15px 0;
+    }
+
+    .swipe-nav {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 8px;
+      padding: 5px 15px;
+    }
+
+    .swipe-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-item {
+      flex: 0 0 auto;
+      padding: 8px 15px;
+      background: var(--gray-border);
+      border-radius: 20px;
+      text-decoration: none;
+      color: var(--dark-text);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .nav-item.active {
+      background: var(--primary);
+      color: var(--light-text);
+    }
+
+    /* ===== PRODUCT GRID ===== */
+    main {
+      padding: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--dark-text);
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 1rem;
+      padding: 0rem;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+
+    .product-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      aspect-ratio: 1/1;
+    }
+
+    .product-image-container {
+      width: 80%;
+      height: 80%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .product-name {
+  font-size: 0.8rem;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.4em;
+  line-height: 1.2;
+}
+
+    .product-item:hover .product-name {
+      opacity: 1;
+    }
+
+    .product-item:hover .product-image {
+      transform: scale(1.05);
+    }
+
+    /* ===== RESPONSIVE MEDIA QUERIES ===== */
+    @media (max-width: 374px) {
+      .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.3rem;
+      }
+      .product-name {
+        font-size: var(--font-size-xs);
+        padding: 0.3rem;
+      }
+    }
+
+    @media (min-width: 375px) and (max-width: 767px) {
+      .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.75rem;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .product-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1199px) {
+      .product-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .product-grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>GLAND shine</h1>
+    </div>
+    <div class="search-bar">
       <input type="text" placeholder="Search for products...">
-      <button>🔍</button>
-  </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLAND MART</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
-    <style>
-</style>
-    
-    </head>
-    <body>
-    <header>
-        <h1>GLAND shine</h1>
-        <div class="nav-scroller">
-          <button class="arrow-btn" onclick="scrollCategories(-1)" aria-label="Scroll left">❮</button>            
-                    <div class="nav-scroller" aria-label="Swipeable categories">
-                      <nav class="swipe-nav" role="navigation">
-                        <a href="#women" class="nav-item active">Women</a>
-                        <a href="#men" class="nav-item">Men</a>
-                        <a href="#baby" class="nav-item">Baby</a>
-                        <a href="#underwear" class="nav-item">Underwear</a>
-                        <a href="#sale" class="nav-item">Sale</a>
-                        <a href="#electronics" class="nav-item">Electronics</a>
-                        <a href="#utensils" class="nav-item">Utensils</a>
-                        <a href="#beachwear" class="nav-item">Beachwear</a>
-                        <a href="#wigs" class="nav-item">Wigs</a>
-                        <a href="#sunglasses" class="nav-item">Sunglasses</a>
-                        <a href="#shoes" class="nav-item">Shoes</a>
-                        <a href="#watches" class="nav-item">Watches</a>
-                        <a href="#jewelry" class="nav-item">Jewelry</a>
-                        <a href="#accessories" class="nav-item">Accessories</a>
-                        <a href="#cosmetics" class="nav-item">Cosmetics</a>
-                        <a href="#giftcards" class="nav-item">Gift Cards</a>
-                        <a href="#home" class="nav-item">Home</a>
-                        <a href="#about" class="nav-item">About</a>                    
-                      </nav>  
-                      <button class="arrow-btn" onclick="scrollCategories(1)" aria-label="Scroll right">❯</button>                   
-                    </div>
-    </header>
+      <button><i class="fas fa-search"></i></button>
+    </div>
+    <div class="nav-scroller">
+      <nav class="swipe-nav">
+        <a href="#women" class="nav-item active">Women</a>
+        <a href="#men" class="nav-item">Men</a>
+        <a href="#baby" class="nav-item">Baby</a>
+        <a href="#underwear" class="nav-item">Underwear</a>
+        <a href="#sale" class="nav-item">Sale</a>
+        <a href="#electronics" class="nav-item">Electronics</a>
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#beauty" class="nav-item">Beauty</a>
+        <a href="#accessories" class="nav-item">Accessories</a>
+        <a href="#shoes" class="nav-item">Shoes</a>
+        <a href="#jewelry" class="nav-item">Jewelry</a>
+        <a href="#bags" class="nav-item">Bags</a>
+        <a href="#sports" class="nav-item">Sports</a>
+        <a href="#kids" class="nav-item">Kids</a>
+        <a href="#gifts" class="nav-item">Gifts</a>
+        <a href="#trending" class="nav-item">Trending</a>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-          <h2>Product Categories</h2>
-          <div class="product-grid"> 
+  <main>
+    <h2 class="section-title">Trending Now</h2>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="images/2001.jpg" class="product-image">
+        </div>
+        <span class="product-name">Floral Summer Dress</span>
+      </a>
 
-              <!--women's category-->
-              <a href="pages/women.html" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/dark.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="product-name">Women Clothing</span>
-              </a>
-            
-                <a href="pages/ladies.html" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/tester.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="product-name">Men Clothing</span>
-              </a>  
-              
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/2001.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="product-name">Baby and Maternity</span>
-              </a> 
+      <!-- Product 2 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=Product+2" class="product-image">
+        </div>
+        <span class="product-name">Men's Casual Shirt</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/index-1.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="mens">UnderWear & Sleepwear</span>
-              </a>
+      <!-- Product 3 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/F0F0F0/333333?text=Product+3" class="product-image">
+        </div>
+        <span class="product-name">Baby Romper Set</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/floral-summer-dress-blue.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="kids">Electronics</span>
-              </a>
+      <!-- Product 4 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+4" class="product-image">
+        </div>
+        <span class="product-name">Wireless Earbuds</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/img_6_1745903857987.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Utensils">Utensils</span>
-              </a>
+      <!-- Product 5 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FF2E4D/FFFFFF?text=Product+5" class="product-image">
+        </div>
+        <span class="product-name">Lace Bralette</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/index-1.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Electronics">BeachWear</span>
-              </a>
+      <!-- Product 6 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=Product+6" class="product-image">
+        </div>
+        <span class="product-name">Sneakers</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/img_3_1745903816838.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="ladies Wigs">Ladies wigs</span>
-              </a>
+      <!-- Product 7 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/F0F0F0/333333?text=Product+7" class="product-image">
+        </div>
+        <span class="product-name">Denim Shorts</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/index-002.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Sunglasses">Sunglasses</span>
-              </a>
+      <!-- Product 8 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/index-003.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Shoes">Shoes</span>
-              </a>
+      <!-- product 9 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/dreses25.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Watches">Watches</span>
-              </a>
+      <!-- product 10 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/dark2.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Jewelry">Jewelry</span>
-              </a>
+      <!-- product 11 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/dreses25.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Accessories">Accessories</span>
-              </a>
+      <!-- product 12 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="#" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/index-004.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Cosmetics">Cosmetics</span>
-              </a>
+      <!-- product 13 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
 
-              <a href="pages/dresses.html" class="product-item">
-                <div class="product-image-container">
-                  <img src="images/dreses25.jpg" width="150" height="150" style="object-fit: contain;" class="product-image">
-                </div>
-                <span class="Card Gifts">Gift cards</span>
-              </a>
-              </div>        
-        </div>  
-    </main>
-    <script src="script.js"></script>
-    </body>
+      <!-- product 14 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 15 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 16 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 17 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 18 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 19 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 20 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 21 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 22 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 23 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+      <!-- product 24 -->
+        <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">Smart Watch</span>
+      </a>
+
+       <!-- product 9 -->
+         <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
+        </div>
+        <span class="product-name">shoes</span>
+      </a>
+    </div>
+
+    <h2 class="section-title">New Arrivals</h2>
+    <div class="product-grid">
+      <!-- Product 9 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FF2E4D/FFFFFF?text=New+1" class="product-image">
+        </div>
+        <span class="product-name">Crop Top</span>
+      </a>
+
+      <!-- Product 10 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/000000/FFFFFF?text=New+2" class="product-image">
+        </div>
+        <span class="product-name">Jogger Pants</span>
+      </a>
+
+      <!-- Product 11 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/F0F0F0/333333?text=New+3" class="product-image">
+        </div>
+        <span class="product-name">Baby Shoes</span>
+      </a>
+
+      <!-- Product 12 -->
+      <a href="#" class="product-item">
+        <div class="product-image-container">
+          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=New+4" class="product-image">
+        </div>
+        <span class="product-name">Bluetooth Speaker</span>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // Simple navigation scroll functionality
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        document.querySelector('.nav-item.active').classList.remove('active');
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
 </html>
