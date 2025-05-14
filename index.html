@@ -2,51 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GLAND MART - SHEIN Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GLAND MART </title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     /* ===== BASE STYLES ===== */
-    :root {
-      /* inspired color palette */
-      --primary: #FF2E4D; /* SHEIN pink */
-      --secondary: #000000;
-      --light-bg: #FFFFFF;
-      --dark-text: #333333;
-      --light-text: #FFFFFF;
-      --gray-border: #F0F0F0;
-      
-      /* SHEIN-inspired typography */
-      --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --font-size-xs: 0.625rem;  /* 10px */
-      --font-size-sm: 0.75rem;   /* 12px */
-      --font-size-md: 0.875rem;  /* 14px */
-      --font-size-lg: 1rem;      /* 16px */
-      --font-size-xl: 1.125rem;  /* 18px */
-      --font-size-xxl: 1.5rem;   /* 24px */
-    }
+:root {
+  --primary: #FF2E4D;
+  --secondary: #000000;
+  --light-bg: #FFFFFF;
+  --dark-text: #333333;
+  --light-text: #FFFFFF;
+  --gray-border: #F0F0F0;
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-xs: 0.625rem;
+  --font-size-sm: 0.75rem;
+  --font-size-md: 0.875rem;
+  --font-size-lg: 1rem;
+  --font-size-xl: 1.125rem;
+  --font-size-xxl: 1.5rem;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: var(--font-main);
-      line-height: 1.5;
-      color: var(--dark-text);
-      background: var(--light-bg);
-    }
+html {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
 
-    /* ===== HEADER STYLES ===== */
+body {
+  font-family: var(--font-main);
+  line-height: 1.5;
+  color: var(--dark-text);
+  background: var(--light-bg);
+  overscroll-behavior: contain;
+}
+
+input, textarea, select {
+  font-size: 16px;
+}
+/* ===== HEADER STYLES ===== */
     header {
       background: white;
       padding: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
-      top: 0;
+      top: 0px;
       z-index: 100;
     }
 
@@ -61,120 +68,144 @@
       font-weight: 700;
     }
 
-    .search-bar {
-      display: flex;
-      margin: 0 auto;
-      max-width: 400px;
-      border: 1px solid var(--gray-border);
-      border-radius: 25px;
-      overflow: hidden;
-    }
+.search-bar {
+  display: flex;
+  margin: 0 auto;
+  max-width: 400px;
+  border: 1px solid var(--gray-border);
+  border-radius: 25px;
+  overflow: hidden;
+}
 
-    .search-bar input {
-      flex: 1;
-      padding: 12px 15px;
-      border: none;
-      outline: none;
-      font-size: var(--font-size-md);
-    }
+.search-bar input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-md);
+}
 
-    .search-bar button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0 20px;
-      cursor: pointer;
-      font-size: var(--font-size-lg);
-    }
+.search-bar button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+}
 
-    /* ===== NAVIGATION ===== */
-    .nav-scroller {
-      position: relative;
-      margin: 15px 0;
-    }
+/* ===== EDGE-TO-EDGE HORIZONTAL NAV ===== */
+.nav-scroller {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: #f8f8f8;
+  padding: 10px 0;
+}
 
-    .swipe-nav {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      gap: 8px;
-      padding: 5px 15px;
-    }
+.nav-scroller::-webkit-scrollbar {
+  display: none;
+}
 
-    .swipe-nav::-webkit-scrollbar {
-      display: none;
-    }
+.swipe-nav {
+  display: inline-flex;
+  padding: 0 5px;
+  min-width: 100%;
+}
 
-    .nav-item {
-      flex: 0 0 auto;
-      padding: 8px 15px;
-      background: var(--gray-border);
-      border-radius: 20px;
-      text-decoration: none;
-      color: var(--dark-text);
-      font-size: var(--font-size-sm);
-      font-weight: 500;
-      white-space: nowrap;
-    }
+.nav-item {
+  flex: 0 0 auto;
+  padding: 8px 18px;
+  margin: 0 2px;
+  background: var(--gray-border);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--dark-text);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
 
-    .nav-item.active {
-      background: var(--primary);
-      color: var(--light-text);
-    }
+.nav-item.active {
+  background: var(--primary);
+  color: var(--light-text);
+}
 
-    /* ===== PRODUCT GRID ===== */
-    main {
-      padding: 15px;
-    }
+/* ===== EDGE-TO-EDGE PRODUCT GRID ===== */
+main {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--dark-text);
-      font-size: var(--font-size-xl);
-      font-weight: 600;
-    }
-
-    .product-grid {
-      display: grid;
-      gap: 1rem;
-      padding: 0rem;
-      margin: 0 auto;
-      max-width: 1400px;
-    }
-
-    .product-item {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      aspect-ratio: 1/1;
-    }
-
-    .product-image-container {
-      width: 80%;
-      height: 80%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      position: relative;
-    }
-
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .product-name {
-  font-size: 0.8rem;
+.section-title {
   text-align: center;
+  margin: 20px 0;
+  color: var(--dark-text);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  padding: 0 15px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.product-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  aspect-ratio: 1/1;
+  padding: 0;
+}
+
+.product-image-container {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-name {
+  font-size: var(--font-size-sm);
+  text-align: center;
+  margin-top: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -182,61 +213,53 @@
   overflow: hidden;
   height: 2.4em;
   line-height: 1.2;
+  padding: 0 5px;
 }
 
-    .product-item:hover .product-name {
-      opacity: 1;
-    }
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 374px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .product-image-container {
+    width: 65%;
+    height: 65%;
+  }
+  .nav-item {
+    padding: 6px 14px;
+    font-size: var(--font-size-xs);
+  }
+}
 
-    .product-item:hover .product-image {
-      transform: scale(1.05);
-    }
+@media (min-width: 375px) and (max-width: 767px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
-    /* ===== RESPONSIVE MEDIA QUERIES ===== */
-    @media (max-width: 374px) {
-      .product-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.3rem;
-      }
-      .product-name {
-        font-size: var(--font-size-xs);
-        padding: 0.3rem;
-      }
-    }
+@media (min-width: 768px) and (max-width: 1023px) {
+  .product-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 
-    @media (min-width: 375px) and (max-width: 767px) {
-      .product-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 0.75rem;
-      }
-    }
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .product-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .product-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1rem;
-      }
-    }
-
-    @media (min-width: 1024px) and (max-width: 1199px) {
-      .product-grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 1.25rem;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .product-grid {
-        grid-template-columns: repeat(8, 1fr);
-        gap: 1.5rem;
-      }
-    }
+@media (min-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
   </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <h1>GLAND shine</h1>
+      <h1>GLAND</h1>
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Search for products...">
@@ -267,8 +290,9 @@
   <main>
     <h2 class="section-title">Trending Now</h2>
     <div class="product-grid">
+
       <!-- Product 1 -->
-      <a href="#" class="product-item">
+      <a href="pages/dresses.html" class="product-item">
         <div class="product-image-container">
           <img src="images/2001.jpg" class="product-image">
         </div>
@@ -458,18 +482,11 @@
         </div>
         <span class="product-name">Smart Watch</span>
       </a>
-
-       <!-- product 9 -->
-         <a href="#" class="product-item">
-        <div class="product-image-container">
-          <img src="https://via.placeholder.com/300x300/FFFFFF/333333?text=Product+8" class="product-image">
-        </div>
-        <span class="product-name">shoes</span>
-      </a>
     </div>
 
     <h2 class="section-title">New Arrivals</h2>
     <div class="product-grid">
+
       <!-- Product 9 -->
       <a href="#" class="product-item">
         <div class="product-image-container">
@@ -512,6 +529,56 @@
         this.classList.add('active');
       });
     });
+
+    const container = document.querySelector('.horizontal-scroll-container');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+container.addEventListener('mousedown', (e) => {
+  isDown = true;
+  startX = e.pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
+
+container.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+container.addEventListener('mouseup', () => {
+  isDown = false;
+});
+
+container.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - startX) * 2; // Scroll speed
+  container.scrollLeft = scrollLeft - walk;
+});
+
+// Touch support for mobile
+container.addEventListener('touchstart', (e) => {
+  isDown = true;
+  startX = e.touches[0].pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
+
+container.addEventListener('touchend', () => {
+  isDown = false;
+});
+
+container.addEventListener('touchmove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.touches[0].pageX - container.offsetLeft;
+  const walk = (x - startX) * 2;
+  container.scrollLeft = scrollLeft - walk;
+});
+
+    document.addEventListener('gesturestart', function(e) {
+  e.preventDefault();
+});
   </script>
 </body>
 </html>
